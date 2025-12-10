@@ -49,7 +49,7 @@ jobs:
         id: api-call
         run: |
           # 整形済みテキストをcontentフィールドにセット
-          body=$(jq -n --arg content "${{ steps.get-diff.outputs.result }}" '{content: $content}')
+          body=$(jq -n --arg content '${{ steps.get-diff.outputs.result }}' '{content: $content}')
           
           response=$(curl -s -X POST ${{ secrets.API_ENDPOINT }} \
             -H "Content-Type: application/json" \
