@@ -27,14 +27,12 @@ jobs:
             
             // フィルタリング
             const targetFiles = files.data.filter(file => {
-              // ソースコードのみ
-              const isSourceCode = /\.(js|ts|py|java|go|rs)$/.test(file.filename);
               // 変更が大きすぎないもの
               const isReasonableSize = file.changes < 1000;
               // パッチが存在する（テキストファイル）
               const hasPatch = file.patch !== undefined;
               
-              return isSourceCode && isReasonableSize && hasPatch;
+              return isReasonableSize && hasPatch;
             });
             
             // 最大10ファイルまで
